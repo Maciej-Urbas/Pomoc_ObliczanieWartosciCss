@@ -1,0 +1,23 @@
+@media screen and (min-width: 2px) and (max-width: 988px) {
+    .naglowki {
+        font-size: 30.89px;
+    }
+    .left {
+        font-size: 19.57px;
+    }
+    .ukladSpan {
+        padding-left: 8.91px;
+    }
+    .right {
+        /* padding-left: 17.82px; */
+        font-size: 20.59px;
+    }
+    button {
+        width: 162.72px;
+        height: 43.23px;
+    }
+    .MasterDesigner {
+        height: 303.5;
+        font-size: 13.36px;
+    }
+}
