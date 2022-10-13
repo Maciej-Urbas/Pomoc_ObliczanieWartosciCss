@@ -48,7 +48,7 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
 
     
     // Zamiana pojedynczego znaku `a` na `.`.
-    Console.WriteLine();
+    //Console.WriteLine();
     int sssCounter = 0;
     for(int i=0; i<tabOfIntValues.Length-1; i++){
         if((tabOfIntValues[i+1] - tabOfIntValues[i]) < 3){
@@ -78,25 +78,25 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
     int indexB = 0;
 
     float mnoznik = minWidth / maxWidth;
-    Console.WriteLine("mnoznik: "+ mnoznik);
+    //Console.WriteLine("mnoznik: "+ mnoznik);
 
     wynik = surowyKodCss;
-    Console.WriteLine(wynik);
+    //Console.WriteLine(wynik);
 
-    Console.WriteLine();
+    //Console.WriteLine();
     for(int i=0; i<tabOfIntValues.Length-1; i++){
         if((tabOfIntValues[i+1] - tabOfIntValues[i]) < 3){
             if(changeOperator == 0){
                 indexA = tabOfIntValues[i];
-                Console.Write(indexA);
+                //Console.Write(indexA);
                 changeOperator = 1;
             }
         }
         else {
             indexB = tabOfIntValues[i];
-            Console.Write(indexB);
+            //Console.Write(indexB);
             changeOperator = 0;
-            Console.Write("sss");
+            //Console.Write("sss");
 
             // Console.WriteLine(surowyKodCss.Substring(indexA, (indexB-indexA+1)));
 
@@ -104,10 +104,10 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
             // Zapisanie czystych wartosci float do drugiej tablicy.
             tabOfStringValues[sssCounter] = surowyKodCss.Substring(indexA, (indexB-indexA+1));
             tabOfFloatValues[sssCounter] = float.Parse(surowyKodCss.Substring(indexA, (indexB-indexA+1)));
-            Console.Write(tabOfStringValues[sssCounter] + " float: " + tabOfFloatValues[sssCounter]);
+            //Console.Write(tabOfStringValues[sssCounter] + " float: " + tabOfFloatValues[sssCounter]);
             if(sssCounter == 0){
                 tabOfFloatValues[sssCounter] = 2;
-                Console.WriteLine(" pierwsza zmiana: "+tabOfFloatValues[sssCounter]);
+                //Console.WriteLine(" pierwsza zmiana: "+tabOfFloatValues[sssCounter]);
 
                 // Zmiana textu, ktory ostatecznie zostanie wygenerowany
                 wynik = wynik.Replace(string.Format("{0:0}", tabOfStringValues[sssCounter]), string.Format("{0:F2}", tabOfFloatValues[sssCounter]));
@@ -115,7 +115,7 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
             }
             else if(sssCounter == 1){
                 tabOfFloatValues[sssCounter] = minWidth-1;
-                Console.WriteLine(" druga zmiana: "+tabOfFloatValues[sssCounter]);
+                //Console.WriteLine(" druga zmiana: "+tabOfFloatValues[sssCounter]);
 
                 // Zmiana textu, ktory ostatecznie zostanie wygenerowany
 
@@ -138,18 +138,16 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
                 Console.WriteLine();
                 */
                 // Koniec testow
+
                 wynik = wynik.Replace(string.Format("{0:0}", tabOfStringValues[sssCounter]), string.Format("{0:F2}", tabOfFloatValues[sssCounter]));
-                // Console.WriteLine(wynik);
             }
 
             // Zamiana wartosci w tabeli floatow, na te juz podzielobe.
             else{
                 tabOfFloatValues[sssCounter] = tabOfFloatValues[sssCounter] * mnoznik;
-                Console.WriteLine(" przemnozona wartosc: "+tabOfFloatValues[sssCounter]);
 
                 // Zmiana textu, ktory ostatecznie zostanie wygenerowany
                 wynik = wynik.Replace(string.Format("{0:0}", tabOfStringValues[sssCounter]), string.Format("{0:F2}", tabOfFloatValues[sssCounter]));
-                // Console.WriteLine(wynik);
             }
 
             sssCounter += 1;
@@ -157,30 +155,87 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
     }
     if(changeOperator != 0){
         indexB = tabOfIntValues[tabOfIntValues.Length-1];
-        Console.Write(indexB);
-        Console.Write("sss");
-        //Console.WriteLine(surowyKodCss.Substring(indexA, (indexB-indexA+1)));
 
         tabOfStringValues[sssCounter] = surowyKodCss.Substring(indexA, (indexB-indexA+1));
         tabOfFloatValues[sssCounter] = float.Parse(surowyKodCss.Substring(indexA, (indexB-indexA+1)));
-        Console.Write(tabOfStringValues[sssCounter] + " float: " + tabOfFloatValues[sssCounter]);
 
         // Zamiana wartosci w tabeli floatow, na te juz podzielobe.
         tabOfFloatValues[sssCounter] = tabOfFloatValues[sssCounter] * mnoznik;
-        Console.Write(" przemnozona wartosc: "+tabOfFloatValues[sssCounter]);
 
         // Zmiana textu, ktory ostatecznie zostanie wygenerowany
-        // Console.WriteLine(wynik);
         wynik = wynik.Replace(string.Format("{0:0}", tabOfStringValues[sssCounter]), string.Format("{0:F2}", tabOfFloatValues[sssCounter]));
-        Console.WriteLine();
-        // Console.WriteLine(surowyKodCss);
     }
-    //Console.Write(tabOfIntValues[tabOfIntValues.Length-1]);
+    
+
+    
+    
+    
+    // Testy do wylowienia indeksow
+    int l = 0;
+    int lw = 0;
+    for(int i=0; i<tabOfCharValues.Length; i++){
+        if(l == 0){
+            if(tabOfCharValues[i] != 'a'){
+                lw += 1;
+                l = 1;
+            }
+        } else{
+            if(tabOfCharValues[i] == 'a'){
+                lw += 1;
+                l = 0;
+            }
+        }
+    }
+
+    int[] tabelaIndexowDoWyciecia = new int[lw];
+    l = 0;
+    lw=0;
+    for(int i=0; i<tabOfCharValues.Length; i++){
+        if(l == 0){
+            if(tabOfCharValues[i] != 'a'){
+                tabelaIndexowDoWyciecia[lw] = i-1;
+                l = 1;
+                lw += 1;
+            }
+        } else{
+            if(tabOfCharValues[i] == 'a'){
+                tabelaIndexowDoWyciecia[lw] = i;
+                lw += 1;
+                l = 0;
+            }
+        }
+    }
+
+
+    wynik = "";
+    int j = 3;
+    // Miejsce na sklecenie tego lancuchu do porzadku
+    for(int i=0; i<tabOfFloatValues.Length; i++){
+        if(i==0){
+            string pomocniczy = surowyKodCss.Substring(0, tabelaIndexowDoWyciecia[i]);
+            pomocniczy = pomocniczy + string.Format("{0:F2}", tabOfFloatValues[i]);
+            wynik = wynik + pomocniczy;
+        }
+        else if(i==1) {
+            string pomocniczy = surowyKodCss.Substring(tabelaIndexowDoWyciecia[i], (tabelaIndexowDoWyciecia[i+1]-tabelaIndexowDoWyciecia[i]));
+            pomocniczy = pomocniczy + string.Format("{0:F2}", tabOfFloatValues[i]);
+            wynik = wynik + pomocniczy;
+        }
+        else {
+            string pomocniczy = surowyKodCss.Substring(tabelaIndexowDoWyciecia[j], tabelaIndexowDoWyciecia[j+1]-tabelaIndexowDoWyciecia[j]);
+            pomocniczy = pomocniczy + string.Format("{0:F2}", tabOfFloatValues[i]);
+            wynik = wynik + pomocniczy;
+            j+=2;
+        }   
+    }
+    
+    string pomocniczyaa = surowyKodCss.Substring(tabelaIndexowDoWyciecia[j], surowyKodCss.Length-tabelaIndexowDoWyciecia[j]);
+    wynik = wynik + pomocniczyaa;
 
     File.WriteAllText("result.css", wynik);
     return wynik;
 }
 
-string surowyKodCss = zamianaZPlikuNaGolyString("style");
+string surowyKodCss = zamianaZPlikuNaGolyString("style2");
 // Console.WriteLine(surowyKodCss);
-Console.WriteLine("wynil: "+przeliczenieWartosciLiczbowychCss(surowyKodCss, 989, 1110));
+Console.WriteLine("wynil: "+przeliczenieWartosciLiczbowychCss(surowyKodCss, 1782, 1920));
