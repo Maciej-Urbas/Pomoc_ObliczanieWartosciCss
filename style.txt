@@ -1,23 +1,44 @@
-@media screen and (min-width: 989px) and (max-width: 1110px) {
-  .naglowki {
-    font-size: 34.67px;
+@media screen and (min-width: 826px) and (max-width: 871px) {
+  /* main {    ma45.83px;  } */
+  .image {
+    width: 394.08px;
+    height: 270.35px;
   }
-  .left {
-    font-size: 21.96px;
+  .content_p {
+    font-size: 16.49px;
   }
-  .ukladSpan {
-    padding-left: 10px;
+  .exp-title {
+    padding-top: 4.57px;
+    padding-bottom: 9.16px;
+    padding-left: 9.16px;
+    padding-right: 9.16px;
   }
-  .right {
-    /* padding-left: 20px; */
-    font-size: 23.11px;
+  .exp-title-upper_numbers {
+    font-size: 73.31px;
   }
-  button {
-    width: 182.63px;
-    height: 48.52px;
+  .exp-title-upper_main {
+    /* ma13.74px; */
+    font-size: 39.42px;
   }
-  .MasterDesigner {
-    height: 340.63px;
-    font-size: 15px;
+  .exp-title-lower {
+    margin-top: -39.13px;
+  }
+  .exp-title-lower_p {
+    font-size: 16.49px;
+  }
+  .about-company {
+    margin-top: 45.83px;
+  }
+  .about-company-content_header {
+    font-size: 29.33px;
+  }
+  .about-company-content_header::after {
+    width: 274.94px;
+    height: 2.29px;
+    margin-top: 4.57px;
+    margin-bottom: 13.74px;
+  }
+  .contact {
+    margin-top: 22.9px;
   }
 }

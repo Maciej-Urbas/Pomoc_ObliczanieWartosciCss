@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
+﻿// Upewnij sie co do znakow `-` dla poszczegolnych wartosci stylow
 
 string zamianaZPlikuNaGolyString(string nazwaPliku){
 
@@ -96,7 +95,7 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
             indexB = tabOfIntValues[i];
             //Console.Write(indexB);
             changeOperator = 0;
-            //Console.Write("sss");
+            // Console.Write("sss");
 
             // Console.WriteLine(surowyKodCss.Substring(indexA, (indexB-indexA+1)));
 
@@ -236,6 +235,68 @@ string przeliczenieWartosciLiczbowychCss(string surowyKodCss, float minWidth, fl
     return wynik;
 }
 
-string surowyKodCss = zamianaZPlikuNaGolyString("style2");
-// Console.WriteLine(surowyKodCss);
-Console.WriteLine("wynil: "+przeliczenieWartosciLiczbowychCss(surowyKodCss, 1782, 1920));
+string surowyKodCss = zamianaZPlikuNaGolyString("style");
+
+int l = 0;
+char[] liczby = new char[8];
+for(int i=0; i<60; i++){
+    if(((int)(surowyKodCss[i]) <= 57) && ((int)(surowyKodCss[i]) >= 48)){
+        liczby[l] = surowyKodCss[i];
+        l++;
+    }
+}
+
+float minV = 0;
+float maxV = 0;
+if(l==8){
+    string a = "";
+        a = a + liczby[0];
+        a = a + liczby[1];
+        a = a + liczby[2];
+        a = a + liczby[3];
+        minV = float.Parse(a);
+            Console.WriteLine(minV);
+
+    a = "";
+        a = a + liczby[4];
+        a = a + liczby[5];
+        a = a + liczby[6];
+        a = a + liczby[7];
+        maxV = float.Parse(a);
+            Console.WriteLine(maxV);
+} 
+else if(l==7){
+    string a = "";
+        a = a + liczby[0];
+        a = a + liczby[1];
+        a = a + liczby[2];
+        minV = float.Parse(a);
+            Console.WriteLine(minV);
+
+    a = "";
+        a = a + liczby[3];
+        a = a + liczby[4];
+        a = a + liczby[5];
+        a = a + liczby[6];
+        maxV = float.Parse(a);
+            Console.WriteLine(maxV);
+} 
+else if(l==6){
+    string a = "";
+        a = a + liczby[0];
+        a = a + liczby[1];
+        a = a + liczby[2];
+        minV = float.Parse(a);
+            Console.WriteLine(minV);
+
+    a = "";
+        a = a + liczby[3];
+        a = a + liczby[4];
+        a = a + liczby[5];
+        maxV = float.Parse(a);
+            Console.WriteLine(maxV);
+}
+
+string kod = zamianaZPlikuNaGolyString("style");
+
+Console.WriteLine("wynil: "+przeliczenieWartosciLiczbowychCss(kod, minV, maxV));
